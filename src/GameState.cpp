@@ -14,7 +14,7 @@ GameState::GameState(std::shared_ptr<GameInformer> p_informer): m_informer(std::
 
 void GameState::initState(int p_opponentNb)
 {
-    m_player->setPosition(WIDTH/2,HEIGHT/2);
+    m_player->setPosition(WIDTH/2,HEIGHT/2, 28, 40, 0);
 
     for(int i = 0; i < p_opponentNb; i++)
     {
@@ -30,7 +30,8 @@ void GameState::addPlayer(std::string p_playerName)
 
 void GameState::updateState()
 {
-    performMoves();
+    performPlayerMove();
+    performMonsterMoves();
 
     m_informer->defineObject(m_player);
 
@@ -45,7 +46,7 @@ std::tuple<int, int> GameState::generateRandomPosition()
     return std::tuple<int, int>{generatePos(), generatePos()};
 }
 
-void GameState::performMoves()
+void GameState::performMonsterMoves()
 {
     auto l_monster = std::begin(m_monsters);
 
@@ -89,4 +90,17 @@ bool GameState::isPositionOk(int p_newPos)
 void GameState::inputChanged(const RegisteredKeyState & keyState)
 {
     m_registeredKeyState = keyState;
+}
+
+void GameState::performPlayerMove()
+{
+    auto dX = 0;
+    auto dY = 0;
+
+    if(m_registeredKeyState.pressedA) dX--;
+    if(m_registeredKeyState.pressedW) dY++;
+    if(m_registeredKeyState.pressedD) dX++;
+    if(m_registeredKeyState.pressedS) dY--;
+
+    m_player->makeAMove(dX, dY);
 }

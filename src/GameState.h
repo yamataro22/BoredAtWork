@@ -35,11 +35,12 @@ private:
 
     std::tuple<int, int> generateRandomPosition();
 
-    void performMoves();
+    void performMonsterMoves();
 
     int generatePos();
 
     bool isPositionOk(int x);
 
+    void performPlayerMove();
 };
 
