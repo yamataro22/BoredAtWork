@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 #include "Player.h"
-#include "Opponent.h"
+#include "Monster.h"
 #include <vector>
 
 class GameInformer;
@@ -23,8 +23,8 @@ private:
 
     std::shared_ptr<GameInformer> m_informer;
 
-    std::shared_ptr<Renderable> m_player;
-    std::vector<std::shared_ptr<Renderable>> m_monsters;
+    std::shared_ptr<Player> m_player;
+    std::vector<std::shared_ptr<Monster>> m_monsters;
 
     std::tuple<int, int> generateRandomPosition();
 

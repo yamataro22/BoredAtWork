@@ -17,7 +17,7 @@ void GameState::initState(int p_opponentNb)
     for(int i = 0; i < p_opponentNb; i++)
     {
         auto l_positons = generateRandomPosition();
-        m_monsters.push_back(std::make_shared<Opponent>(std::get<0>(l_positons), std::get<1>(l_positons)));
+        m_monsters.push_back(std::make_shared<Monster>(std::get<0>(l_positons), std::get<1>(l_positons)));
     }
 }
 
@@ -48,6 +48,9 @@ void GameState::performMoves()
 {
     for(auto& monster : m_monsters)
     {
-        monster->makeAMove(m_player->m_positionX, m_player->m_positionY);
+        if(monster->approchAnotherMob(m_player))
+        {
+            m_player->getHit(monster->FIRE_POWER);
+        }
     }
 }

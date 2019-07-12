@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 
 struct Renderable
 {
@@ -25,10 +27,18 @@ struct Renderable
             m_rotation(0)
     { }
 
-    void virtual makeAMove(int d_x, int d_y)
+    virtual bool approchAnotherMob(const std::shared_ptr<Renderable>)
     {
-        m_positionX += d_x;
-        m_positionY += d_y;
+        m_positionX += 1;
+        m_positionY += 1;
+
+        return false;
+    }
+
+    virtual void makeAMove(int dx, int dy)
+    {
+        m_positionX += dx;
+        m_positionY += dy;
     }
 
     void setPosition(int posX, int posY)
