@@ -1,4 +1,4 @@
-#include "Engine.h"
+#include "Renderer.h"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -7,21 +7,26 @@
 
 #include <iostream>
 
-Engine::Engine(const std::string& p_windowName)
+Renderer::Renderer(const std::string& p_windowName)
 {
     bool l_status = initGLFW(p_windowName) and initGLEW() and initDevIL();
     if(l_status)
-        std::cout << "Engine init successful" << std::endl;
-    else std::cout << "Engine init FAILED" << std::endl;
+        std::cout << "Renderer init successful" << std::endl;
+    else std::cout << "Renderer init FAILED" << std::endl;
 }
 
-Engine::~Engine()
+Renderer::~Renderer()
 {
     glDeleteVertexArrays(1, &m_vertexArrayObjectID);
     glfwTerminate();
 }
 
-bool Engine::initGLFW(const std::string& p_windowName)
+void Renderer::Render(const Object &o)
+{
+
+}
+
+bool Renderer::initGLFW(const std::string& p_windowName)
 {
     if (!glfwInit())
     {
@@ -45,7 +50,7 @@ bool Engine::initGLFW(const std::string& p_windowName)
     return true;
 }
 
-bool Engine::initGLEW()
+bool Renderer::initGLEW()
 {
     glewExperimental = true;
     if (glewInit() != GLEW_OK) {
@@ -58,7 +63,7 @@ bool Engine::initGLEW()
     return true;
 }
 
-bool Engine::initDevIL()
+bool Renderer::initDevIL()
 {
     ilInit();
     ilClearColour(255, 255, 255, 000);

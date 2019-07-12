@@ -6,13 +6,17 @@
 #include <string>
 #include <vector>
 
+class Object;
+
 struct GLFWwindow;
 
-class Engine
+class Renderer
 {
 public:
-    explicit Engine(const std::string& p_windowName);
-    ~Engine();
+    explicit Renderer(const std::string& p_windowName);
+    ~Renderer();
+
+    void Render(const Object& o);
 
 private:
     GLFWwindow* m_window;

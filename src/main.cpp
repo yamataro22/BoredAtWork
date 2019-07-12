@@ -1,9 +1,9 @@
-#include "Engine.h"
+#include "Renderer.h"
 
 #include <iostream>
 
 int main()
 {
-    Engine e("window");
+    Renderer e("window");
 }
 
