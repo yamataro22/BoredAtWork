@@ -54,7 +54,7 @@ void GameState::performMonsterMoves()
     {
         if((*l_monster)->approachAnotherMob(m_player))
         {
-            m_player->getHit((*l_monster)->FIRE_POWER);
+            m_player->getHit((*l_monster)->getFirePower());
             l_monster = m_monsters.erase(l_monster);
         }
         else
@@ -66,7 +66,7 @@ void GameState::performMonsterMoves()
     {
         if(monster->approachAnotherMob(m_player))
         {
-            m_player->getHit(monster->FIRE_POWER);
+            m_player->getHit(monster->getFirePower());
         }
     }
 }

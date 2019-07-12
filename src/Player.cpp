@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(std::string & p_name):m_name(p_name), m_remainingHp(2000)
+Player::Player(std::string & p_name):m_name(p_name), m_remainingHp(30)
 {
 
 }
