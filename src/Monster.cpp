@@ -2,7 +2,7 @@
 #include "Monster.h"
 #include "time.h"
 
-Monster::Monster(int p_posX, int p_posY)
+Monster::Monster(int p_posX, int p_posY) : m_speed(2)
 {
     //@TODO implement proper scaling
 
@@ -20,22 +20,9 @@ int Monster::generateRandomFirepower() {
     return rand() % MAX_SIZE + 10;
 }
 
-bool Monster::approachPosition(const std::shared_ptr<Renderable> p_positionToApproach)
+bool Monster::didApprochedMob(const std::shared_ptr<Renderable> p_mobToApproach)
 {
-    if(p_positionToApproach->m_positionX != m_positionX)
-    {
-        m_positionX < p_positionToApproach->m_positionX ? m_positionX++ : m_positionX--;
-    }
-
-    if(p_positionToApproach->m_positionY != m_positionY)
-    {
-        m_positionY < p_positionToApproach->m_positionY ? m_positionY++ : m_positionY--;
-    }
-
     return isColliding(*p_positionToApproach);
-}
-
-bool Monster::didApprochedMob(const std::shared_ptr<Renderable> p_mobToApproach) {
     return p_mobToApproach->m_positionX == m_positionX and p_mobToApproach->m_positionY == m_positionY;
 }
 

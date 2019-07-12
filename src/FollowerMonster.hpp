@@ -1,14 +1,13 @@
-//
-// Created by wojtysia on 12.07.19.
-//
+#pragma once
+#include <memory>
+#include "Monster.h"
 
-#ifndef BOREDATWORK_FOLLOWERMONSTER_HPP
-#define BOREDATWORK_FOLLOWERMONSTER_HPP
+class FollowerMonster : public Monster {
 
-
-class FollowerMonster {
-
+public:
+    FollowerMonster(int, int);
+    void makeAMove(const std::shared_ptr<Renderable> sharedPtr) override;
+private:
+    void approachPosition(const std::shared_ptr<Renderable>);
 };
 
-
-#endif //BOREDATWORK_FOLLOWERMONSTER_HPP

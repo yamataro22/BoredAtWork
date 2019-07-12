@@ -24,7 +24,7 @@ private:
     const int WIDTH = 2000;
     const int HEIGHT = 2000;
     const int MAX_SIZE = 20;
-    const int SAFE_ZONE = 200;
+
 
     RegisteredKeyState m_registeredKeyState;
 
@@ -37,11 +37,6 @@ private:
     std::tuple<int, int> generateRandomPosition();
 
     void performMonsterMoves();
-
-    int generatePos();
-
-    bool isPositionOk(int x);
-
     void performPlayerMove();
 
     static bool areColliding(const Renderable& r1, const Renderable& r2);

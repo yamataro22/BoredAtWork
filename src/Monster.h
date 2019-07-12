@@ -6,17 +6,17 @@ class Monster : public Renderable
 {
 public:
 
-
     Monster(int, int);
 
-    virtual bool approachPosition(const std::shared_ptr<Renderable>) override;
     bool didApprochedMob(const std::shared_ptr<Renderable> sharedPtr);
     int getFirePower() const;
+    virtual void makeAMove(const std::shared_ptr<Renderable> sharedPtr) = 0;
 
-private:
+protected:
 
     const int MAX_SIZE = 70;
 
+    int m_speed;
     int m_firePower;
     int generateRandomFirepower();
 };
