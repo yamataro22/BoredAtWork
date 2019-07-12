@@ -23,9 +23,11 @@ private:
 
     std::shared_ptr<GameInformer> m_informer;
 
-    std::unique_ptr<Renderable> m_player;
-    std::vector<std::unique_ptr<Renderable>> m_monsters;
+    std::shared_ptr<Renderable> m_player;
+    std::vector<std::shared_ptr<Renderable>> m_monsters;
 
     std::tuple<float,float> generateRandomPosition();
+
+    void performMoves();
 };
 

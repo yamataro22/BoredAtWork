@@ -18,21 +18,36 @@ void GameState::initState(int p_opponentNb)
     for(int i = 0; i < p_opponentNb; i++)
     {
         auto l_positons = generateRandomPosition();
-        m_monsters.push_back(std::make_unique<Opponent>(std::get<0>(l_positons), std::get<1>(l_positons)));
+        m_monsters.push_back(std::make_shared<Opponent>(std::get<0>(l_positons), std::get<1>(l_positons)));
     }
 }
 
 void GameState::addPlayer(std::string p_playerName)
 {
-    m_player = std::make_unique<Player>(p_playerName);
+    m_player = std::make_shared<Player>(p_playerName);
 }
 
 void GameState::updateState()
 {
-    //m_informer->defineObject(m_player->getPositon());
+    performMoves();
+    m_informer->defineObject(m_player);
+
+    for(const auto monster : m_monsters)
+    {
+        m_informer->defineObject(monster);
+    }
+
 }
 
 std::tuple<float,float> GameState::generateRandomPosition()
 {
     return std::tuple<float, float>(static_cast<float>(rand() % WIDTH), static_cast<float>(rand() % HEIGHT));
+}
+
+void GameState::performMoves()
+{
+    for(auto& monster : m_monsters)
+    {
+        monster->makeAMove(rand()%10, rand()%10);
+    }
 }
