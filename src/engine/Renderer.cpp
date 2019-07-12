@@ -37,7 +37,7 @@ void Renderer::render()
 
     for(const auto& iter : m_objectList)
     {
-        glm::mat4 mvpMatrix = iter->createObjectMatrix();
+        glm::mat4 mvpMatrix = cameraMatrix * iter->createObjectMatrix();
         m_shader->loadMvpMatrix(mvpMatrix);
         m_shader->render();
     }
