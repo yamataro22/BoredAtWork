@@ -10,7 +10,7 @@ Shader::Shader()
 
     // Get the codes for shaders
     const char* vertexShaderCode = "#version 330 core\nin vec2 aVBOHandle;uniform mat4 uMVPMatrix;void main(){gl_Position=uMVPMatrix*vec4(aVBOHandle,0,1);}";
-    const char* fragmentShaderCode = "#version 330 core\n;layout(location = 0) out vec3 color;void main(){color = vec3(1,0,0);}";
+    const char* fragmentShaderCode = "#version 330 core\nlayout(location = 0) out vec3 color;void main(){color = vec3(1,0,0);}";
 
     // Create the shaders on the gpu
     unsigned long vertexShaderGPUID = glCreateShader(GL_VERTEX_SHADER);
@@ -76,16 +76,65 @@ Shader::Shader()
 
     glDeleteShader(vertexShaderGPUID);
     glDeleteShader(fragmentShaderGPUID);
+
+    m_vboHandleIn = glGetAttribLocation(m_shaderID, "aVBOHandle");
+    m_mvpMatrixUni = glGetUniformLocation(m_shaderID, "uMVPMatrix");
+
+    // mesh definition
+    glm::vec2 vertices[4] = {
+        {-1, -1},
+        {1, -1},
+        {1, 1},
+        {-1, 1}
+    };
+    unsigned indices[6] = {0, 1, 2, 3, 2, 0};
+
+    glGenBuffers(1, &m_vboMeshDefinitionID);
+    glGenBuffers(1, &m_indicesBufferID);
+
+    glBindBuffer(GL_ARRAY_BUFFER, m_vboMeshDefinitionID);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices[0], GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesBufferID);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_STATIC_DRAW);
 }
 
 Shader::~Shader()
 {
     glDeleteProgram(m_shaderID);
+    glDeleteBuffers(1, &m_vboMeshDefinitionID);
+    glDeleteBuffers(1, &m_indicesBufferID);
 }
 
 void Shader::activate()
 {
     glUseProgram(m_shaderID);
+}
+
+void Shader::loadMvpMatrix(glm::mat4 mvpMatrix)
+{
+    glUniformMatrix4fv(m_mvpMatrixUni, 1, GL_FALSE, &mvpMatrix[0][0]);
+}
+
+void Shader::render()
+{
+    glEnableVertexAttribArray(m_vboHandleIn);
+    glBindBuffer(GL_ARRAY_BUFFER, m_vboMeshDefinitionID);
+
+    glVertexAttribPointer(
+        m_vboHandleIn,               // address
+        2,                                      // size
+        GL_FLOAT,                               // type
+        GL_FALSE,                               // normalized?
+        0,                                      // stride
+        (void*)0                                // array buffer offset
+    );
+
+    // indexing
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesBufferID);
+    glDrawElements(0x0004, 6, GL_UNSIGNED_INT, (void*)0);
+
+    glDisableVertexAttribArray(m_vboHandleIn);
 }
 
 std::string Shader::getErrorStringForShader(int shaderId)

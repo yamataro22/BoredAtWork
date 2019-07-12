@@ -1,7 +1,13 @@
 #pragma once
 
+#define _USE_MATH_DEFINES
+#define GLM_ENABLE_EXPERIMENTAL
 #include <memory>
 
+
+#include <glm/gtx/transform.hpp>
+
+#include <math.h>
 
 struct Renderable
 {
@@ -45,5 +51,20 @@ struct Renderable
     {
         m_positionX = posX;
         m_positionY = posY;
+    }
+
+    glm::mat4 createObjectMatrix()
+    {
+        using namespace glm;
+
+        mat4 matrix = scale(vec3(m_sizeX, m_sizeY, 1)) * mat4(1);
+        //rotation
+        vec3 vertex = vec3(0, 0, 1);
+        float d_2_r = M_PI / 180;
+        matrix = rotate(m_rotation * d_2_r, vertex) * matrix;
+        //transformation
+        matrix = translate(vec3(m_positionX, m_positionY, 0)) * matrix;
+
+        return matrix;
     }
 };

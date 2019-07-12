@@ -31,11 +31,24 @@ void Renderer::render()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f );
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
+
     glm::mat4 cameraMatrix = glm::ortho(0.f, 2000.f, 0.f, 2000.f);
     m_shader->activate();
 
+    for(const auto& iter : m_objectList)
+    {
+        glm::mat4 mvpMatrix = iter->createObjectMatrix();
+        m_shader->loadMvpMatrix(mvpMatrix);
+        m_shader->render();
+    }
+
     m_objectList.clear();
+
+    GLenum error = glGetError();
+    if(error != GLEW_OK)
+    {
+        std::cout << "GLEW ERROR: " << glewGetErrorString(error) << std::endl;
+    }
 }
 
 bool Renderer::initGLEW()

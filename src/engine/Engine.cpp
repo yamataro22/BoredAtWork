@@ -39,8 +39,8 @@ bool Engine::initGLFW(const std::string& p_windowName)
     glfwWindowHint(GLFW_SAMPLES, 4); //multisampling x4
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //OpenGL version 3...
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //.3
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+//    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     m_window = glfwCreateWindow(1600, 1000, p_windowName.c_str(), NULL, NULL);
     if (m_window == NULL)
