@@ -6,10 +6,20 @@
 
 GameState::GameState(std::shared_ptr<GameInformer> p_informer): m_informer(std::move(p_informer))
 {
+    initState();
+}
+
+void GameState::initState()
+{
 
 }
 
 void GameState::addPlayer(std::string p_playerName)
 {
     m_player = std::make_unique<Player>(p_playerName);
+}
+
+void GameState::updateState()
+{
+
 }
