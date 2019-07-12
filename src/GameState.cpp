@@ -8,7 +8,6 @@
 GameState::GameState(std::shared_ptr<GameInformer> p_informer): m_informer(std::move(p_informer))
 {
     srand(time(NULL));
-    initState(10);
 }
 
 void GameState::initState(int p_opponentNb)

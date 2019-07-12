@@ -10,6 +10,8 @@ Engine::Engine()
     initGLFW("Window");
     m_renderer = std::make_shared<Renderer>();
     m_gameState = std::make_shared<GameState>(m_renderer);
+    m_gameState->addPlayer("Borys");
+    m_gameState->initState(10);
 }
 
 Engine::~Engine() {
