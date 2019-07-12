@@ -20,9 +20,9 @@ Renderer::~Renderer()
     glDeleteVertexArrays(1, &m_vertexArrayObjectID);
 }
 
-void Renderer::defineObject(float positionX, float positionY, float sizeX, float sizeY, float rotation)
+void Renderer::defineObject(const Renderable& object)
 {
-    m_objectList.push_back(Renderable{positionX, positionY, sizeX, sizeY, rotation});
+    m_objectList.push_back(object);
 }
 
 void Renderer::render()
