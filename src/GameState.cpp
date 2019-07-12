@@ -47,7 +47,7 @@ void GameState::performMoves()
 {
     for(auto& monster : m_monsters)
     {
-        if(monster->approchAnotherMob(m_player))
+        if(monster->approachAnotherMob(m_player))
         {
             m_player->getHit(monster->FIRE_POWER);
         }

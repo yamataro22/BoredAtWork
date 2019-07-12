@@ -33,7 +33,7 @@ struct Renderable
             m_rotation(0)
     { }
 
-    virtual bool approchAnotherMob(const std::shared_ptr<Renderable>)
+    virtual bool approachAnotherMob(const std::shared_ptr<Renderable>)
     {
         m_positionX += 1;
         m_positionY += 1;
@@ -51,6 +51,18 @@ struct Renderable
     {
         m_positionX = posX;
         m_positionY = posY;
+        m_sizeX = 50;
+        m_sizeY = 50;
+        m_rotation = 0;
+    }
+
+    void setPosition(int posX, int posY, int sizeX, int sizeY, int rot)
+    {
+        m_positionX = posX;
+        m_positionY = posY;
+        m_sizeX = sizeX;
+        m_sizeY = sizeY;
+        m_rotation = rot;
     }
 
     glm::mat4 createObjectMatrix()

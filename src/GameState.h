@@ -35,5 +35,6 @@ private:
     int generatePos();
 
     bool isPositionOk(int x);
+
 };
 

@@ -2,13 +2,16 @@
 #include "Monster.h"
 
 
-Monster::Monster(float p_posX, float p_posY)
+Monster::Monster(int p_posX, int p_posY)
 {
-    float m_positionX = p_posX;
-    float m_positionY = p_posY;
+    m_positionX = p_posX;
+    m_positionY = p_posY;
+    m_sizeX = SIZE;
+    m_sizeY = SIZE;
+    m_rotation = 0;
 }
 
-bool Monster::approchAnotherMob(const std::shared_ptr<Renderable> p_mobToApproach)
+bool Monster::approachAnotherMob(const std::shared_ptr<Renderable> p_mobToApproach)
 {
     if(p_mobToApproach->m_positionX != m_positionX)
     {
