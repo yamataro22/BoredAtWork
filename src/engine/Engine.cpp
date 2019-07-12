@@ -42,7 +42,7 @@ bool Engine::initGLFW(const std::string& p_windowName)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    m_window = glfwCreateWindow(480u, 320u, p_windowName.c_str(), NULL, NULL);
+    m_window = glfwCreateWindow(1600, 1000, p_windowName.c_str(), NULL, NULL);
     if (m_window == NULL)
     {
         return false;

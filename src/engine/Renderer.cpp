@@ -29,6 +29,9 @@ void Renderer::defineObject(const std::shared_ptr<Renderable>& object)
 
 void Renderer::render()
 {
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f );
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
     glm::mat4 cameraMatrix = glm::ortho(0.f, 2000.f, 0.f, 2000.f);
     m_shader->activate();
 
