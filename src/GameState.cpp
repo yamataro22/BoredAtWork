@@ -24,7 +24,7 @@ void GameState::initState(int p_opponentNb)
 
 void GameState::addPlayer(std::string p_playerName)
 {
-    m_player = std::make_unique<Opponent>(p_playerName);
+    m_player = std::make_unique<Player>(p_playerName);
 }
 
 void GameState::updateState()
