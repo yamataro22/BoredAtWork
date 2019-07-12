@@ -39,14 +39,6 @@ Renderable::Renderable():
     m_rotation(0)
 { }
 
-bool Renderable::approachPosition(const std::shared_ptr<Renderable>)
-{
-    m_positionX += 1;
-    m_positionY += 1;
-
-    return false;
-}
-
 void Renderable::makeAMove(int dx, int dy)
 {
     m_positionX += dx;

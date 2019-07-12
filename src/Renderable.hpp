@@ -24,7 +24,6 @@ struct Renderable
 
     Renderable();
 
-    virtual bool approachPosition(const std::shared_ptr<Renderable>);
     virtual void makeAMove(int dx, int dy);
 
     void setPosition(int posX, int posY);

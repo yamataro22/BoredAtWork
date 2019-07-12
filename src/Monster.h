@@ -8,7 +8,7 @@ public:
 
     Monster(int, int);
 
-    bool didApprochedMob(const std::shared_ptr<Renderable> sharedPtr);
+    bool didApprochedMob(const std::shared_ptr<Renderable>& sharedPtr);
     int getFirePower() const;
     virtual void makeAMove(const std::shared_ptr<Renderable> sharedPtr) = 0;
 

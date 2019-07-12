@@ -20,14 +20,12 @@ int Monster::generateRandomFirepower() {
     return rand() % MAX_SIZE + 10;
 }
 
-bool Monster::didApprochedMob(const std::shared_ptr<Renderable> p_mobToApproach)
+bool Monster::didApprochedMob(const std::shared_ptr<Renderable>& p_mobToApproach)
 {
-    return isColliding(*p_positionToApproach);
-    return p_mobToApproach->m_positionX == m_positionX and p_mobToApproach->m_positionY == m_positionY;
+    return isColliding(*p_mobToApproach);
 }
 
-int Monster::getFirePower() const {
+int Monster::getFirePower() const
+{
     return m_firePower;
 }
-
-
