@@ -104,3 +104,8 @@ void GameState::performPlayerMove()
 
     m_player->makeAMove(dX, dY);
 }
+
+void GameState::mouseClicked(int x, int y)
+{
+
+}

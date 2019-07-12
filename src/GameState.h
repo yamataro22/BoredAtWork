@@ -17,6 +17,7 @@ public:
     void updateState();
 
     void inputChanged(const RegisteredKeyState&) override;
+    void mouseClicked(int x, int y) override;
 
 private:
 

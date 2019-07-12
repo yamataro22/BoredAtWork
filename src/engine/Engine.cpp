@@ -9,6 +9,7 @@ namespace
 {
 
 std::weak_ptr<InputObserver> g_activeObserver;
+
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     RegisteredKeyState keyState;
@@ -18,6 +19,21 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
     keyState.pressedD = glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS;
     if(auto activeObserver = g_activeObserver.lock())
         activeObserver->inputChanged(keyState);
+}
+
+void mouseCallback(GLFWwindow* window, int button, int action, int mods)
+{
+    if(action == GLFW_PRESS and button == GLFW_MOUSE_BUTTON_LEFT)
+        if(auto activeObserver = g_activeObserver.lock())
+        {
+            double x, y;
+            glfwGetCursorPos(window, &x, &y);
+
+            int transformedX = 2000 * x / 1600;
+            int transformedY = 2000 - 2 * y;
+
+            activeObserver->mouseClicked(transformedX, transformedY);
+        }
 }
 
 }
@@ -31,6 +47,7 @@ Engine::Engine()
     m_gameState->initState(10);
     g_activeObserver = m_gameState;
     glfwSetKeyCallback(m_window, keyCallback);
+    glfwSetMouseButtonCallback(m_window, mouseCallback);
 }
 
 Engine::~Engine() {

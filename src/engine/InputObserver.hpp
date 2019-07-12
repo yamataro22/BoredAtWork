@@ -13,4 +13,5 @@ class InputObserver
 public:
     virtual ~InputObserver() = default;
     virtual void inputChanged(const RegisteredKeyState&) = 0;
+    virtual void mouseClicked(int x, int y) = 0;
 };
