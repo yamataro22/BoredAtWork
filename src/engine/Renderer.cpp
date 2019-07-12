@@ -1,6 +1,7 @@
 #include "Renderer.h"
 
 #include <GL/glew.h>
+#include <glm/gtc/matrix_transform.hpp>
 #include <IL/il.h>
 #include <IL/ilu.h>
 
@@ -26,6 +27,8 @@ void Renderer::defineObject(float positionX, float positionY, float sizeX, float
 
 void Renderer::render()
 {
+    glm::mat4 cameraMatrix = glm::ortho(0.f, 2000.f, 0.f, 2000.f);
+
     m_objectList.clear();
 }
 
