@@ -7,9 +7,11 @@
 
 #include <iostream>
 
-Renderer::Renderer()
+Renderer::Renderer() :
+    m_vertexArrayObjectID(0)
 {
     bool l_status = initGLEW() and initDevIL();
+    m_shader = std::make_unique<Shader>();
     if(l_status)
         std::cout << "Renderer init successful" << std::endl;
     else std::cout << "Renderer init FAILED" << std::endl;
@@ -28,6 +30,7 @@ void Renderer::defineObject(const std::shared_ptr<Renderable>& object)
 void Renderer::render()
 {
     glm::mat4 cameraMatrix = glm::ortho(0.f, 2000.f, 0.f, 2000.f);
+    m_shader->activate();
 
     m_objectList.clear();
 }
