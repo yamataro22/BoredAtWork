@@ -2,10 +2,8 @@
 #include "Monster.h"
 #include "time.h"
 
-Monster::Monster(int p_posX, int p_posY) : m_speed(2)
+Monster::Monster(int p_posX, int p_posY)
 {
-    //@TODO implement proper scaling
-
     //auto scale = WINDOW_WIDTH /  WINDOW_HEIGHT;
 
     m_positionX = p_posX;
@@ -14,6 +12,15 @@ Monster::Monster(int p_posX, int p_posY) : m_speed(2)
     m_sizeX = 0.75 * m_firePower;
     m_sizeY = m_firePower;
     m_rotation = 0;
+
+    //m_speed form 0 to 10
+    //max firepower form 10 to 80
+
+    auto newSize = - m_firePower + MAX_SIZE;
+
+    //@TODO kill myself
+
+    m_speed = (((newSize - 10) * (10 - 1)) / (MAX_SIZE - 10)) + 1;
 }
 
 int Monster::generateRandomFirepower() {

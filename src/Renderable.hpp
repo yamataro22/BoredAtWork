@@ -31,4 +31,5 @@ struct Renderable
 
     glm::mat4 createObjectMatrix();
     bool isColliding(const Renderable &other);
+
 };
