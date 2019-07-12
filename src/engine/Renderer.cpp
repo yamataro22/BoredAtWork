@@ -21,9 +21,9 @@ Renderer::~Renderer()
     glfwTerminate();
 }
 
-void Renderer::Render(const Object &o)
+void Renderer::defineObject(float positionX, float positionY, float sizeX, float sizeY, float rotation)
 {
-
+    
 }
 
 bool Renderer::initGLFW(const std::string& p_windowName)
