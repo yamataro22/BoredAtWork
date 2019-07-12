@@ -20,6 +20,8 @@ private:
     const int WIDTH = 2000;
     const int HEIGHT = 2000;
     const int MAX_SIZE = 20;
+    const int SAFE_ZONE = 200;
+
 
     std::shared_ptr<GameInformer> m_informer;
 
@@ -29,5 +31,9 @@ private:
     std::tuple<int, int> generateRandomPosition();
 
     void performMoves();
+
+    int generatePos();
+
+    bool isPositionOk(int x);
 };
 
