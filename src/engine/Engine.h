@@ -12,7 +12,7 @@ class Engine
 {
 public:
     explicit Engine(const std::string& p_windowName);
-    ~Engine() = default;
+    ~Engine();
 
 private:
     GLFWwindow* m_window;

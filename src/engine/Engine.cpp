@@ -15,6 +15,12 @@ Engine::Engine(const std::string& p_windowName)
     else std::cout << "Engine init FAILED" << std::endl;
 }
 
+Engine::~Engine()
+{
+    glDeleteVertexArrays(1, &m_vertexArrayObjectID);
+    glfwTerminate();
+}
+
 bool Engine::initGLFW(const std::string& p_windowName)
 {
     if (!glfwInit())
