@@ -5,7 +5,6 @@
 #include "Shader.hpp"
 
 #include <list>
-#include <memory>
 #include <string>
 
 class Renderer : public GameInformer
