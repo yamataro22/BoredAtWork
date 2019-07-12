@@ -23,7 +23,12 @@ Renderer::~Renderer()
 
 void Renderer::defineObject(float positionX, float positionY, float sizeX, float sizeY, float rotation)
 {
-    
+    m_objectList.push_back(Renderable{positionX, positionY, sizeX, sizeY, rotation});
+}
+
+void Renderer::render()
+{
+    // @TODO
 }
 
 bool Renderer::initGLFW(const std::string& p_windowName)

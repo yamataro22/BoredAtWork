@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameInformer.hpp"
+#include "Renderable.hpp"
 
 #include <list>
 #include <string>
@@ -21,17 +22,9 @@ public:
         float rotation
     ) override;
 
+    void render();
+
 private:
-
-    struct Renderable
-    {
-        float positionX;
-        float positionY;
-        float sizeX;
-        float sizeY;
-        float rotation;
-    };
-
     GLFWwindow* m_window;
     unsigned m_vertexArrayObjectID;
 
