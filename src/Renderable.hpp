@@ -24,5 +24,15 @@ struct Renderable
             m_rotation(0)
     { }
 
-    void makeAMove(float p_x, float p_y){}
+    void makeAMove(float d_x, float d_y)
+    {
+        m_positionX += d_x;
+        m_positionY += d_y;
+    }
+
+    void setPosition(float posX, float posY)
+    {
+        m_positionX = posX;
+        m_positionY = posY;
+    }
 };

@@ -5,7 +5,7 @@ include("${CMAKE_SOURCE_DIR}/src/engine/CMakeLists.txt")
 
 message(STATUS "Linking project")
 
-add_executable(BoredAtWork ${FILE_MAIN} ${ENGINE_CPP} src/GameState.cpp src/GameState.h src/Opponent.cpp src/Opponent.h src/Mob.hpp src/Position.hpp)
+add_executable(BoredAtWork ${FILE_MAIN} ${ENGINE_CPP} src/GameState.cpp src/GameState.h src/Opponent.cpp src/Opponent.h src/Renderable.hpp)
 
 target_link_libraries(BoredAtWork ${DEVIL_LIBRARY_1} ${DEVIL_LIBRARY_2} ${DEVIL_LIBRARY_3})
 target_link_libraries(BoredAtWork ${GLEW_LIBRARY})

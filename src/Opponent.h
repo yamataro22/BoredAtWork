@@ -1,12 +1,8 @@
 #pragma once
+#include "Renderable.hpp"
 
-#include "Mob.hpp"
-
-class Opponent : public Mob
+class Opponent : public Renderable
 {
 public:
-    Opponent(Renderable&);
-    void makeAMove(Renderable&) override;
-private:
-    Renderable m_position;
+    Opponent(float, float);
 };

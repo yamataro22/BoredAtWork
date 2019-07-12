@@ -22,8 +22,10 @@ private:
     const int MAX_SIZE = 20;
 
     std::shared_ptr<GameInformer> m_informer;
-    std::unique_ptr<Player> m_player;
-    std::vector<std::unique_ptr<Mob>> m_monsters;
-    Renderable generateRandomPosition();
+
+    std::unique_ptr<Renderable> m_player;
+    std::vector<std::unique_ptr<Renderable>> m_monsters;
+
+    std::tuple<float,float> generateRandomPosition();
 };
 
