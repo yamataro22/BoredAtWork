@@ -85,3 +85,8 @@ bool GameState::isPositionOk(int p_newPos)
     return    p_newPos < m_player->m_positionX - SAFE_ZONE
            or p_newPos > m_player->m_positionY + SAFE_ZONE;
 }
+
+void GameState::inputChanged(const RegisteredKeyState & keyState)
+{
+    m_registeredKeyState = keyState;
+}
