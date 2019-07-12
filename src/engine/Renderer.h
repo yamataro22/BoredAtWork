@@ -20,7 +20,7 @@ public:
 private:
     unsigned m_vertexArrayObjectID;
 
-    std::list<const std::shared_ptr<Renderable>> m_objectList;
+    std::list<std::shared_ptr<Renderable>> m_objectList;
     std::unique_ptr<Shader> m_shader;
 
     bool initGLEW();
