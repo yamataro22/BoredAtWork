@@ -34,6 +34,7 @@ void GameState::updateState()
     performMonsterMoves();
 
     m_informer->defineObject(m_player);
+    m_informer->defineObject(m_player->getHealthbarRenderable());
 
     for(const auto& monster : m_monsters)
     {
