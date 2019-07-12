@@ -4,6 +4,8 @@
 #include "Player.h"
 #include <memory>
 #include "time.h"
+#include <vector>
+#include <algorithm>
 
 GameState::GameState(std::shared_ptr<GameInformer> p_informer): m_informer(std::move(p_informer))
 {
@@ -45,6 +47,20 @@ std::tuple<int, int> GameState::generateRandomPosition()
 
 void GameState::performMoves()
 {
+    auto l_monster = std::begin(m_monsters);
+
+    while (l_monster != std::end(m_monsters))
+    {
+        if((*l_monster)->approachAnotherMob(m_player))
+        {
+            m_player->getHit((*l_monster)->FIRE_POWER);
+            l_monster = m_monsters.erase(l_monster);
+        }
+        else
+            ++l_monster;
+    }
+
+
     for(auto& monster : m_monsters)
     {
         if(monster->approachAnotherMob(m_player))
