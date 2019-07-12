@@ -2,7 +2,7 @@
 add_definitions(-D_CRT_SECURE_NO_WARNINGS -DM2D_USE_CONSOLE)
 
 # Set newest compiler version
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++14")
 
 # Set modules path
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")

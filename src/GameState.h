@@ -9,8 +9,9 @@ class GameState
 {
 public:
     GameState(std::shared_ptr<GameInformer>);
-
     void addPlayer(std::string playerName);
+    
+    void updateState();
 
 private:
 
