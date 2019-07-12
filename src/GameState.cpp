@@ -29,24 +29,25 @@ void GameState::addPlayer(std::string p_playerName)
 void GameState::updateState()
 {
     performMoves();
+
     m_informer->defineObject(m_player);
 
-    for(const auto monster : m_monsters)
+    for(const auto& monster : m_monsters)
     {
         m_informer->defineObject(monster);
     }
 
 }
 
-std::tuple<float,float> GameState::generateRandomPosition()
+std::tuple<int, int> GameState::generateRandomPosition()
 {
-    return std::tuple<float, float>(static_cast<float>(rand() % WIDTH), static_cast<float>(rand() % HEIGHT));
+    return std::tuple<int, int>{rand() % WIDTH, rand() % HEIGHT};
 }
 
 void GameState::performMoves()
 {
     for(auto& monster : m_monsters)
     {
-        monster->makeAMove(rand()%10, rand()%10);
+        monster->makeAMove(m_player->m_positionX, m_player->m_positionY);
     }
 }

@@ -26,7 +26,7 @@ private:
     std::shared_ptr<Renderable> m_player;
     std::vector<std::shared_ptr<Renderable>> m_monsters;
 
-    std::tuple<float,float> generateRandomPosition();
+    std::tuple<int, int> generateRandomPosition();
 
     void performMoves();
 };
