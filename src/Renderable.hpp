@@ -36,7 +36,7 @@ struct Renderable
             m_rotation(0)
     { }
 
-    virtual bool approachAnotherMob(const std::shared_ptr<Renderable>)
+    virtual bool approachPosition(const std::shared_ptr<Renderable>)
     {
         m_positionX += 1;
         m_positionY += 1;

@@ -20,19 +20,19 @@ int Monster::generateRandomFirepower() {
     return rand() % MAX_SIZE + 10;
 }
 
-bool Monster::approachAnotherMob(const std::shared_ptr<Renderable> p_mobToApproach)
+bool Monster::approachPosition(const std::shared_ptr<Renderable> p_positionToApproach)
 {
-    if(p_mobToApproach->m_positionX != m_positionX)
+    if(p_positionToApproach->m_positionX != m_positionX)
     {
-        m_positionX < p_mobToApproach->m_positionX ? m_positionX++ : m_positionX--;
+        m_positionX < p_positionToApproach->m_positionX ? m_positionX++ : m_positionX--;
     }
 
-    if(p_mobToApproach->m_positionY != m_positionY)
+    if(p_positionToApproach->m_positionY != m_positionY)
     {
-        m_positionY < p_mobToApproach->m_positionY ? m_positionY++ : m_positionY--;
+        m_positionY < p_positionToApproach->m_positionY ? m_positionY++ : m_positionY--;
     }
 
-    return didApprochedMob(p_mobToApproach);
+    return didApprochedMob(p_positionToApproach);
 }
 
 bool Monster::didApprochedMob(const std::shared_ptr<Renderable> p_mobToApproach) {

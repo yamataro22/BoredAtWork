@@ -52,7 +52,7 @@ void GameState::performMonsterMoves()
 
     while (l_monster != std::end(m_monsters))
     {
-        if((*l_monster)->approachAnotherMob(m_player))
+        if((*l_monster)->approachPosition(m_player))
         {
             m_player->getHit((*l_monster)->getFirePower());
             l_monster = m_monsters.erase(l_monster);
@@ -64,7 +64,7 @@ void GameState::performMonsterMoves()
 
     for(auto& monster : m_monsters)
     {
-        if(monster->approachAnotherMob(m_player))
+        if(monster->approachPosition(m_player))
         {
             m_player->getHit(monster->getFirePower());
         }
@@ -97,10 +97,10 @@ void GameState::performPlayerMove()
     auto dX = 0;
     auto dY = 0;
 
-    if(m_registeredKeyState.pressedA) dX--;
-    if(m_registeredKeyState.pressedW) dY++;
-    if(m_registeredKeyState.pressedD) dX++;
-    if(m_registeredKeyState.pressedS) dY--;
+    if(m_registeredKeyState.pressedA) dX -= 10;
+    if(m_registeredKeyState.pressedW) dY += 10;
+    if(m_registeredKeyState.pressedD) dX += 10;
+    if(m_registeredKeyState.pressedS) dY -= 10;
 
     m_player->makeAMove(dX, dY);
 }

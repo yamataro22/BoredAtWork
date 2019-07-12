@@ -9,7 +9,7 @@ public:
 
     Monster(int, int);
 
-    bool approachAnotherMob(const std::shared_ptr<Renderable>) override;
+    virtual bool approachPosition(const std::shared_ptr<Renderable>) override;
     bool didApprochedMob(const std::shared_ptr<Renderable> sharedPtr);
     int getFirePower() const;
 
