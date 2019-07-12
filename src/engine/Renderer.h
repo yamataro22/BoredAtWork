@@ -14,20 +14,14 @@ public:
     explicit Renderer();
     ~Renderer();
 
-    void defineObject(
-        float positionX,
-        float positionY,
-        float sizeX,
-        float sizeY,
-        float rotation
-    ) override;
+    void defineObject(const Renderable& object) override;
 
     void render();
 
 private:
     unsigned m_vertexArrayObjectID;
 
-    std::list<Renderable> m_objectList;
+    std::list<const Renderable&> m_objectList;
     std::unique_ptr<Shader> m_shader;
 
     bool initGLEW();

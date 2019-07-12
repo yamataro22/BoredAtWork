@@ -7,5 +7,5 @@ class GameInformer
 public:
     virtual ~GameInformer() = default;
 
-    virtual void defineObject(Renderable& pos) = 0;
+    virtual void defineObject(const Renderable& r) = 0;
 };
