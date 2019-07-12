@@ -23,6 +23,7 @@ void Engine::launch()
         m_gameState->updateState();
         m_renderer->render();
         glfwSwapBuffers(m_window);
+        glfwPollEvents();
     }
 }
 
