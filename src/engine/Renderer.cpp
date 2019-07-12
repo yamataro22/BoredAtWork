@@ -20,7 +20,7 @@ Renderer::~Renderer()
     glDeleteVertexArrays(1, &m_vertexArrayObjectID);
 }
 
-void Renderer::defineObject(const Renderable& object)
+void Renderer::defineObject(const std::shared_ptr<Renderable>& object)
 {
     m_objectList.push_back(object);
 }

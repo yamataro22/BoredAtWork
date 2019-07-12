@@ -14,14 +14,14 @@ public:
     explicit Renderer();
     ~Renderer();
 
-    void defineObject(const Renderable& object) override;
+    void defineObject(const std::shared_ptr<Renderable>& object) override;
 
     void render();
 
 private:
     unsigned m_vertexArrayObjectID;
 
-    std::list<const Renderable&> m_objectList;
+    std::list<const std::shared_ptr<Renderable>> m_objectList;
     std::unique_ptr<Shader> m_shader;
 
     bool initGLEW();

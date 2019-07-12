@@ -83,6 +83,11 @@ Shader::~Shader()
     glDeleteProgram(m_shaderID);
 }
 
+void Shader::activate()
+{
+    glUseProgram(m_shaderID);
+}
+
 std::string Shader::getErrorStringForShader(int shaderId)
 {
     int logLenght;
