@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
 #include <memory>
+#include "Player.h"
 
 class GameInformer;
-class Player;
 
 class GameState
 {
