@@ -6,12 +6,10 @@
 #include <list>
 #include <string>
 
-struct GLFWwindow;
-
 class Renderer : public GameInformer
 {
 public:
-    explicit Renderer(const std::string& p_windowName);
+    explicit Renderer();
     ~Renderer();
 
     void defineObject(
@@ -25,12 +23,11 @@ public:
     void render();
 
 private:
-    GLFWwindow* m_window;
+
     unsigned m_vertexArrayObjectID;
 
     std::list<Renderable> m_objectList;
 
-    bool initGLFW(const std::string& windowName);
     bool initGLEW();
     bool initDevIL();
 };

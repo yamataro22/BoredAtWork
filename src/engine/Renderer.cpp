@@ -1,15 +1,14 @@
 #include "Renderer.h"
 
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include <IL/il.h>
 #include <IL/ilu.h>
 
 #include <iostream>
 
-Renderer::Renderer(const std::string& p_windowName)
+Renderer::Renderer()
 {
-    bool l_status = initGLFW(p_windowName) and initGLEW() and initDevIL();
+    bool l_status = initGLEW() and initDevIL();
     if(l_status)
         std::cout << "Renderer init successful" << std::endl;
     else std::cout << "Renderer init FAILED" << std::endl;
@@ -18,7 +17,6 @@ Renderer::Renderer(const std::string& p_windowName)
 Renderer::~Renderer()
 {
     glDeleteVertexArrays(1, &m_vertexArrayObjectID);
-    glfwTerminate();
 }
 
 void Renderer::defineObject(float positionX, float positionY, float sizeX, float sizeY, float rotation)
@@ -28,31 +26,7 @@ void Renderer::defineObject(float positionX, float positionY, float sizeX, float
 
 void Renderer::render()
 {
-    // @TODO
-}
-
-bool Renderer::initGLFW(const std::string& p_windowName)
-{
-    if (!glfwInit())
-    {
-        return false;
-    }
-
-    glfwWindowHint(GLFW_SAMPLES, 4); //multisampling x4
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //OpenGL version 3...
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //.3
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    m_window = glfwCreateWindow(480u, 320u, p_windowName.c_str(), NULL, NULL);
-    if (m_window == NULL)
-    {
-        return false;
-    }
-
-    glfwMakeContextCurrent(m_window);
-
-    return true;
+    m_objectList.clear();
 }
 
 bool Renderer::initGLEW()
