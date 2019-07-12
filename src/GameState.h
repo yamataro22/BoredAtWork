@@ -43,5 +43,7 @@ private:
     bool isPositionOk(int x);
 
     void performPlayerMove();
+
+    static bool areColliding(const Renderable& r1, const Renderable& r2);
 };
 

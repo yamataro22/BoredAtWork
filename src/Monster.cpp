@@ -32,7 +32,7 @@ bool Monster::approachPosition(const std::shared_ptr<Renderable> p_positionToApp
         m_positionY < p_positionToApproach->m_positionY ? m_positionY++ : m_positionY--;
     }
 
-    return didApprochedMob(p_positionToApproach);
+    return isColliding(*p_positionToApproach);
 }
 
 bool Monster::didApprochedMob(const std::shared_ptr<Renderable> p_mobToApproach) {
