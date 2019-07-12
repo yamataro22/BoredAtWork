@@ -47,7 +47,7 @@ void GameState::performMonsterMoves()
 
     while (l_monster != std::end(m_monsters))
     {
-        (*l_monster)->makeAMove(m_player);
+        (*l_monster)->makeAMove(m_player, m_monsters);
 
         if((*l_monster)->didApprochedMob(m_player))
         {

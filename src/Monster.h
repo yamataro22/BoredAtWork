@@ -1,6 +1,7 @@
 #pragma once
 #include "Renderable.hpp"
 #include <memory>
+#include <vector>
 
 class Monster : public Renderable
 {
@@ -11,6 +12,7 @@ public:
     bool didApprochedMob(const std::shared_ptr<Renderable>& sharedPtr);
     int getFirePower() const;
     virtual void makeAMove(const std::shared_ptr<Renderable> sharedPtr) = 0;
+    virtual void makeAMove(const std::shared_ptr<Renderable> sharedPtr, std::vector<std::shared_ptr<Monster>>& others);
 
 protected:
 

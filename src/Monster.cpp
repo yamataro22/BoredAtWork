@@ -36,3 +36,21 @@ int Monster::getFirePower() const
 {
     return m_firePower;
 }
+
+void Monster::makeAMove(const std::shared_ptr<Renderable> sharedPtr, std::vector<std::shared_ptr<Monster>> &others)
+{
+    int backupX = m_positionX;
+    int backupY = m_positionY;
+
+    makeAMove(std::move(sharedPtr));
+
+    for(auto& other : others)
+    {
+        if(this != other.get() and isColliding(*other))
+        {
+            m_positionX = backupX;
+            m_positionY = backupY;
+            return;
+        }
+    }
+}
