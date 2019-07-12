@@ -1,15 +1,11 @@
 #pragma once
 
+class Renderable;
+
 class GameInformer
 {
 public:
     virtual ~GameInformer() = default;
 
-    virtual void defineObject(
-        float positionX,
-        float positionY,
-        float sizeX,
-        float sizeY,
-        float rotation
-        ) = 0;
+    virtual void defineObject(Renderable& pos) = 0;
 };
